@@ -6,7 +6,6 @@
     <title>TP HTML - BTS SIO</title>
 </head>
 <body>
-<center>
     <h1>Exercice 1 : Memento HTML5</h1>
     <p>Voici un memento des balises HTML5 courantes utilisées pour la présentation de texte. Ces balises sont fréquemment utilisées dans la création de sites web.</p>
 
@@ -85,7 +84,6 @@
 
     <h2>Profil</h2>
     <p>Formé dans le domaine de l’informatique, je suis dynamique, organisé et axé sur les résultats. Passionné par l'informatique, je cherche à relever de nouveaux défis.</p>
-</center>
 </body>
 </html>
 
