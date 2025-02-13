@@ -1,90 +1,179 @@
-!DOCTYPE html
-html lang=fr
-head
-    meta charset=UTF-8
-    meta name=viewport content=width=device-width, initial-scale=1.0
-    titleTP HTML - BTS SIOtitle
-head
-body
-center
-    h1Exercice 1  Memento HTML5h1
-    pVoici un memento des balises HTML5 courantes utilisées pour la présentation de texte. Ces balises sont fréquemment utilisées dans la création de sites web.p
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP HTML - BTS SIO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
 
-    h2Liste des balises HTMLh2
-    ul
-        li
-            strong&lt;h1&gt; à &lt;h6&gt;strong  Définir des titres hiérarchiques dans le texte
-            brExemple  &lt;h1&gt;Titre principal&lt;h1&gt;
-        li
-        li
-            strong&lt;p&gt;strong  Définir un paragraphe de texte
-            brExemple  &lt;p&gt;Ceci est un paragraphe.&lt;p&gt;
-        li
-        li
-            strong&lt;a&gt;strong  Définir un lien hypertexte
-            brExemple  &lt;a href=httpswww.example.com&gt;Cliquer ici&lt;a&gt;
-        li
-        li
-            strong&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;strong  Créer des listes (non ordonnée ou ordonnée)
-            brExemple  &lt;ul&gt;&lt;li&gt;Item 1&lt;li&gt;&lt;ul&gt;
-        li
-        li
-            strong&lt;blockquote&gt;strong  Afficher une citation
-            brExemple  &lt;blockquote&gt;Citation exemple&lt;blockquote&gt;
-        li
-        li
-            strong&lt;strong&gt;, &lt;em&gt;strong  Mettre en gras ou en italique
-            brExemple  &lt;strong&gt;Important&lt;strong&gt; &lt;em&gt;Italique&lt;em&gt;
-        li
-    ul
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-    h1Exercice 2  Le langage SQLh1
+        main {
+            padding: 20px;
+        }
 
-    h21. Le langage SQLh2
-    h31.1. Définitionh3
-    pLe langage SQL (Structured Query Language ou Langage de requêtes structuré) est un langage comprenant à lui seul l’ensemble des ordres nécessaires à la création et à la gestion d’une base de données relationnelle. Il a été créé en 1986 et est en fait l’aboutissement de plusieurs langages (Sequel en 1977, SystemR, …) créés depuis l’apparition du modèle relationnel en 1970 (le modèle relationnel a été inventé par Mr Codd, un mathématicien de chez IBM). L'utilisation du langage SQL suppose obligatoirement que les données aient été définies selon le modèle relationnel au sein d'un SGBDR (Oracle ©, SQLServer, mySQL, PostgreSQL…).p
+        h1, h2, h3 {
+            color: #4CAF50;
+        }
 
-    h31.2. Les différentes normes utiliséesh3
-    pIl existe aujourd'hui plusieurs normes relatives à l'utilisation du langage SQL. La différence entre ces deux normes se situe principalement dans l'écriture des jointures et dans l'ajout de fonctionnalités p
-    ul
-        liLa norme SQL 89 qui est encore très utilisée actuellement.li
-        liLa norme SQL 92.li
-        liAujourd'hui SQL 2011.li
-    ul
-    pBien qu'il existe des normes, il peut y avoir des différences entre SGBDR dans la syntaxe. Ainsi on peut lire sur le site de PostgreSQL p
-    blockquote
-        Le développement de PostgreSQL™ respecte le standard en vigueur, tant que celui-ci ne s'oppose pas aux fonctionnalités traditionnelles ou au bon sens…
-    blockquote
-    pSQL-92 définit trois niveaux de conformité  basique (ENTRY), intermédiaire (INTERMEDIATE) et complète (FULL). La majorité des systèmes de gestion de bases de données se prétendaient compatibles au standard SQL dès lors qu'ils se conformaient au niveau Entry.p
+        p, ul, li {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
 
-    h22. Le modèle de données utilisé dans le coursh2
-    h32.1. Le modèle entité-association (ou MCD) d'un établissement hospitalierh3
-    h32.2. Le modèle relationnel (ou MRD) d'un établissement hospitalierh3
-    h32.3. La description textuelle des tables utiliséesh3
-    pstrongfonction_personnelstrong (code_fonction, libelle_fonction)brClé primaire  code_fonctionp
-    pstrongservicestrong (num_service, libelle_service, capacite_accueil, date_ouverture)brClé primaire  num_servicep
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
 
-    h1Exercice 3  CV de Victor Cordeloish1
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            text-align: center;
+        }
 
-    h2Informations personnellesh2
-    pstrongNom strong Victor Cordeloisp
-    pstrongAdresse strong 948 route de Saint Martinp
-    pstrongTéléphone strong 0677422887p
-    pstrongEmail strong a href=mailtovictor.cordelois@gmail.comvictor.cordelois@gmail.comap
+        .btn:hover {
+            background-color: #45a049;
+        }
 
-    h2Formationh2
-    pstrongBaccalauréat STI2D spécialité Systèmes d’information et numériquestrong (Année scolaire 20222024)p
-    pstrongBTS SIOstrong (20242025)p
+        blockquote {
+            border-left: 4px solid #4CAF50;
+            padding-left: 10px;
+            margin-left: 20px;
+            font-style: italic;
+            color: #555;
+        }
 
-    h2Compétencesh2
-    ul
-        listrongCommunication strong Capable d’écouter activement et d’exprimer mes idées clairement.li
-        listrongTravail en équipe strong Je m’intègre facilement pour atteindre des objectifs communs.li
-        listrongAdaptabilité strong À l’aise avec les changements et les contextes nouveaux.li
-    ul
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
 
-    h2Profilh2
-    pFormé dans le domaine de l’informatique, je suis dynamique, organisé et axé sur les résultats. Passionné par l'informatique, je cherche à relever de nouveaux défis.p
-center
-body
-html
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Exercice 1 - Memento HTML5</h1>
+</header>
+
+<main>
+    <section>
+        <h2>Liste des balises HTML</h2>
+        <ul>
+            <li>
+                <strong>&lt;h1&gt; à &lt;h6&gt;</strong> - Définir des titres hiérarchiques dans le texte<br>
+                Exemple: &lt;h1&gt;Titre principal&lt;/h1&gt;
+            </li>
+            <li>
+                <strong>&lt;p&gt;</strong> - Définir un paragraphe de texte<br>
+                Exemple: &lt;p&gt;Ceci est un paragraphe.&lt;/p&gt;
+            </li>
+            <li>
+                <strong>&lt;a&gt;</strong> - Définir un lien hypertexte<br>
+                Exemple: &lt;a href="https://www.example.com"&gt;Cliquer ici&lt;/a&gt;
+            </li>
+            <li>
+                <strong>&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</strong> - Créer des listes (non ordonnée ou ordonnée)<br>
+                Exemple: &lt;ul&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;/ul&gt;
+            </li>
+            <li>
+                <strong>&lt;blockquote&gt;</strong> - Afficher une citation<br>
+                Exemple: &lt;blockquote&gt;Citation exemple&lt;/blockquote&gt;
+            </li>
+            <li>
+                <strong>&lt;strong&gt;, &lt;em&gt;</strong> - Mettre en gras ou en italique<br>
+                Exemple: &lt;strong&gt;Important&lt;/strong&gt; &lt;em&gt;Italique&lt;/em&gt;
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Exercice 2 - Le langage SQL</h1>
+
+        <h2>1. Le langage SQL</h2>
+        <h3>1.1. Définition</h3>
+        <p>Le langage SQL (Structured Query Language ou Langage de requêtes structuré) est un langage comprenant à lui seul l’ensemble des ordres nécessaires à la création et à la gestion d’une base de données relationnelle...</p>
+
+        <h3>1.2. Les différentes normes utilisées</h3>
+        <p>Il existe aujourd'hui plusieurs normes relatives à l'utilisation du langage SQL...</p>
+        <ul>
+            <li>La norme SQL 89 qui est encore très utilisée actuellement.</li>
+            <li>La norme SQL 92.</li>
+            <li>Aujourd'hui SQL 2011.</li>
+        </ul>
+
+        <blockquote>
+            Le développement de PostgreSQL™ respecte le standard en vigueur, tant que celui-ci ne s'oppose pas aux fonctionnalités traditionnelles ou au bon sens…
+        </blockquote>
+
+        <p>SQL-92 définit trois niveaux de conformité : basique (ENTRY), intermédiaire (INTERMEDIATE) et complète (FULL).</p>
+
+        <h2>2. Le modèle de données utilisé dans le cours</h2>
+        <h3>2.1. Le modèle entité-association (ou MCD) d'un établissement hospitalier</h3>
+        <h3>2.2. Le modèle relationnel (ou MRD) d'un établissement hospitalier</h3>
+        <h3>2.3. La description textuelle des tables utilisées</h3>
+
+        <p><strong>fonction_personnel</strong> (code_fonction, libelle_fonction)<br>
+        Clé primaire: code_fonction</p>
+
+        <p><strong>service</strong> (num_service, libelle_service, capacite_accueil, date_ouverture)<br>
+        Clé primaire: num_service</p>
+    </section>
+
+    <section>
+        <h1>Exercice 3 - CV de Victor Cordelois</h1>
+
+        <h2>Informations personnelles</h2>
+        <p><strong>Nom</strong>: Victor Cordelois</p>
+        <p><strong>Adresse</strong>: 948 route de Saint Martin</p>
+        <p><strong>Téléphone</strong>: 0677422887</p>
+        <p><strong>Email</strong>: <a href="mailto:victor.cordelois@gmail.com">victor.cordelois@gmail.com</a></p>
+
+        <h2>Formation</h2>
+        <p><strong>Baccalauréat STI2D spécialité Systèmes d’information et numériques</strong> (Année scolaire 2022-2024)</p>
+        <p><strong>BTS SIO</strong> (2024-2025)</p>
+
+        <h2>Compétences</h2>
+        <ul>
+            <li><strong>Communication</strong> - Capable d’écouter activement et d’exprimer mes idées clairement.</li>
+            <li><strong>Travail en équipe</strong> - Je m’intègre facilement pour atteindre des objectifs communs.</li>
+            <li><strong>Adaptabilité</strong> - À l’aise avec les changements et les contextes nouveaux.</li>
+        </ul>
+
+        <h2>Profil</h2>
+        <p>Formé dans le domaine de l’informatique, je suis dynamique, organisé et axé sur les résultats. Passionné par l'informatique, je cherche à relever de nouveaux défis.</p>
+    </section>
+
+    <a href="https://vi-ops678.github.io/HTML/TP3.html" class="btn">Accéder au TP3</a>
+</main>
+
+<footer>
+    <p>&copy; 2025 Victor Cordelois - BTS SIO</p>
+</footer>
+
+</body>
+</html>
