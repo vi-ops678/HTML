@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours HTML - Bloc1-Prog</title>
+    <link rel="stylesheet" href="Style/style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            max-width: 800px;
+            width: 100%;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .cours-content {
+            text-align: left;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+        .cours-content ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        .cours-content li {
+            margin-bottom: 10px;
+        }
+        .cours-content code {
+            background-color: #f0f0f0;
+            padding: 5px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .cours-content pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cours HTML - Bloc1-Prog</h1>
+        <section class="cours-content">
+            <h2>Introduction</h2>
+            <p>Le HTML (HyperText Markup Language) est le langage de base utilisé pour créer des pages web. Il sert à structurer le contenu d'une page en utilisant des éléments appelés "balises".</p>
+            
+            <h2>Structure de base d'un document HTML</h2>
+            <p>Un document HTML commence toujours par une déclaration de type HTML, suivie d'une structure de base avec des balises importantes telles que `<html>`, `<head>`, et `<body>`.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        &lt;title&gt;Titre de la page&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Bienvenue&lt;/h1&gt;
+        &lt;p&gt;Voici un paragraphe&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <h2>Les principales balises HTML</h2>
+            <ul>
+                <li><strong>&lt;h1&gt; à &lt;h6&gt; :</strong> Balises pour les titres, où &lt;h1&gt; est le plus grand et &lt;h6&gt; le plus petit.</li>
+                <li><strong>&lt;p&gt; :</strong> Balise pour un paragraphe de texte.</li>
+                <li><strong>&lt;a&gt; :</strong> Balise pour créer un lien hypertexte.</li>
+                <li><strong>&lt;img&gt; :</strong> Balise pour insérer une image.</li>
+                <li><strong>&lt;ul&gt; :</strong> Balise pour créer une liste non ordonnée.</li>
+                <li><strong>&lt;ol&gt; :</strong> Balise pour créer une liste ordonnée.</li>
+                <li><strong>&lt;li&gt; :</strong> Élément d'une liste.</li>
+            </ul>
+            
+            <h2>Exemple de lien et d'image</h2>
+            <p>Voici comment insérer un lien vers une autre page HTML :</p>
+            <pre><code>&lt;a href="https://www.example.com"&gt;Cliquez ici pour visiter notre site&lt;/a&gt;</code></pre>
+            <p>Et voici comment afficher une image :</p>
+            <pre><code>&lt;img src="image.jpg" alt="Description de l'image"&gt;</code></pre>
+        </section>
+    </div>
+</body>
+</html>
