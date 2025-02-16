@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours JavaScript - Bloc1-Prog</title>
+    <link rel="stylesheet" href="Style/style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            padding-top: 100px; /* Marge du haut */
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 100px; /* Marge du bas */
+        }
+        h1, h2 {
+            color: #333;
+            margin: 0 0 20px 0;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .cours-content {
+            text-align: left;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+        .cours-content ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        .cours-content li {
+            margin-bottom: 10px;
+        }
+        .cours-content code {
+            background-color: #f0f0f0;
+            padding: 5px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .cours-content pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cours JavaScript - Bloc1-Prog</h1>
+        <section class="cours-content">
+            <h2>Introduction</h2>
+            <p>JavaScript est un langage de programmation principalement utilisé pour rendre les pages web interactives. Il permet de manipuler le contenu HTML et CSS pour créer des effets dynamiques.</p>
+            
+            <h2>Structure de base d'un programme JavaScript</h2>
+            <p>Un programme JavaScript peut être intégré directement dans une page HTML via la balise <code>&lt;script&gt;</code>. Le code JavaScript peut également être écrit dans un fichier externe, lié à la page HTML.</p>
+            <pre><code>&lt;script&gt;
+    console.log("Hello, World!");
+&lt;/script&gt;</code></pre>
+
+            <h2>Les variables en JavaScript</h2>
+            <p>Les variables permettent de stocker des valeurs que l'on peut manipuler dans un programme. JavaScript utilise les mots-clés <code>let</code>, <code>const</code>, et <code>var</code> pour déclarer des variables.</p>
+            <ul>
+                <li><strong>let :</strong> Permet de déclarer une variable dont la valeur peut être modifiée.</li>
+                <li><strong>const :</strong> Permet de déclarer une variable dont la valeur ne peut pas être modifiée une fois définie.</li>
+                <li><strong>var :</strong> Ancienne méthode de déclaration, moins utilisée de nos jours.</li>
+            </ul>
+
+            <h2>Les fonctions en JavaScript</h2>
+            <p>Une fonction est un bloc de code qui peut être exécuté à tout moment. Elle peut accepter des paramètres et retourner des valeurs.</p>
+            <pre><code>function direBonjour(prenom) {
+    console.log("Bonjour, " + prenom);
+}
+
+direBonjour("Alice");</code></pre>
+
+            <h2>Les conditions en JavaScript</h2>
+            <p>Les conditions permettent d'exécuter certaines parties du code en fonction de tests. Par exemple, avec <code>if</code> et <code>else</code>.</p>
+            <pre><code>let age = 18;
+if (age >= 18) {
+    console.log("Vous êtes majeur.");
+} else {
+    console.log("Vous êtes mineur.");
+}</code></pre>
+
+            <h2>Les boucles en JavaScript</h2>
+            <p>Les boucles permettent de répéter une action plusieurs fois. Par exemple, la boucle <code>for</code> permet d'itérer sur une séquence de valeurs.</p>
+            <pre><code>for (let i = 0; i < 5; i++) {
+    console.log(i);
+}</code></pre>
+        </section>
+    </div>
+</body>
+</html>
