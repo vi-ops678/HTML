@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours CSS - Bloc1-Prog</title>
+    <link rel="stylesheet" href="Style/style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            padding-top: 100px; /* Marge du haut */
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 50px; /* Espacement en bas */
+        }
+        h1, h2 {
+            color: #333;
+            margin: 0 0 20px 0;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .cours-content {
+            text-align: left;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+        .cours-content ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        .cours-content li {
+            margin-bottom: 10px;
+        }
+        .cours-content code {
+            background-color: #f0f0f0;
+            padding: 5px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .cours-content pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cours CSS - Bloc1-Prog</h1>
+        <section class="cours-content">
+            <h2>Introduction</h2>
+            <p>CSS (Cascading Style Sheets) est un langage utilisé pour décrire l'apparence des pages web en HTML. CSS permet de styliser les éléments HTML en modifiant leur couleur, taille, position, etc.</p>
+            
+            <h2>Structure de base d'un fichier CSS</h2>
+            <p>Un fichier CSS contient des règles de style qui sont appliquées aux éléments HTML. Chaque règle se compose d'un sélecteur et d'une déclaration de style entre accolades.</p>
+            <pre><code>h1 {
+    color: blue;
+    font-size: 24px;
+}</code></pre>
+            
+            <h2>Les sélecteurs CSS</h2>
+            <ul>
+                <li><strong>Sélecteur de type :</strong> Sélectionne tous les éléments d'un certain type, comme les balises HTML. Par exemple, <code>p</code> sélectionne tous les paragraphes.</li>
+                <li><strong>Classe :</strong> Sélectionne tous les éléments ayant une classe spécifique. Par exemple, <code>.ma-classe</code> sélectionne tous les éléments ayant la classe <code>ma-classe</code>.</li>
+                <li><strong>ID :</strong> Sélectionne un élément ayant un ID spécifique. Par exemple, <code>#mon-id</code> sélectionne l'élément avec l'ID <code>mon-id</code>.</li>
+            </ul>
+
+            <h2>Les propriétés CSS</h2>
+            <p>Les propriétés CSS sont les règles que vous appliquez aux éléments HTML. Par exemple, pour changer la couleur du texte, vous utilisez la propriété <code>color</code>.</p>
+            <ul>
+                <li><strong>color:</strong> Définit la couleur du texte.</li>
+                <li><strong>font-size:</strong> Définit la taille de la police.</li>
+                <li><strong>background-color:</strong> Définit la couleur de fond d'un élément.</li>
+                <li><strong>padding:</strong> Ajoute de l'espace à l'intérieur d'un élément.</li>
+                <li><strong>margin:</strong> Ajoute de l'espace à l'extérieur d'un élément.</li>
+                <li><strong>border:</strong> Définit une bordure autour d'un élément.</li>
+            </ul>
+
+            <h2>Exemple de style CSS</h2>
+            <p>Voici un exemple de fichier CSS pour styliser une page HTML :</p>
+            <pre><code>/* Appliquer une couleur de fond à la page */
+body {
+    background-color: #f0f0f0;
+}
+
+/* Styliser les titres */
+h1 {
+    color: blue;
+    font-size: 24px;
+}
+
+/* Ajouter une bordure autour des paragraphes */
+p {
+    border: 1px solid black;
+    padding: 10px;
+}</code></pre>
+        </section>
+    </div>
+</body>
+</html>
