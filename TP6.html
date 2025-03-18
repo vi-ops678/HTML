@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices HTML & CSS</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid black; padding: 5px; text-align: center; }
+        th { background-color: #ddd; }
+        img { width: 50px; height: auto; }
+        a { color: blue; }
+        code { background: #eee; padding: 2px; display: block; }
+    </style>
+</head>
+<body>
+    <h2>Exercice 1 : Tableau simple</h2>
+    <table>
+        <tr><th>Nom</th><th>Âge</th><th>Ville</th></tr>
+        <tr><td>Jean</td><td>25</td><td>Paris</td></tr>
+        <tr><td>Marie</td><td>30</td><td>Lyon</td></tr>
+    </table>
+    
+    <h2>Exercice 2 : Langages de script</h2>
+    <table>
+        <caption>Tableau des langages de script côté serveur</caption>
+        <tr>
+            <th>Logo</th><th>Non abrégé</th><th>Nom complet</th><th>Année de sortie</th><th>Site web</th><th>Exemple de code</th>
+        </tr>
+        <tr>
+            <td><img src="php-logo.png" alt="Logo PHP"></td>
+            <td>PHP</td><td>Hypertext Preprocessor</td><td>1995</td>
+            <td><a href="https://www.php.net" target="_blank">php.net</a></td>
+            <td><code>&lt;?php echo "Hello World!"; ?&gt;</code></td>
+        </tr>
+    </table>
+    
+    <h2>Exercice 3 : Calendrier Avril 2024</h2>
+    <table>
+        <caption>Calendrier Avril 2024</caption>
+        <tr>
+            <th>Lun</th><th>Mar</th><th>Mer</th><th>Jeu</th><th>Ven</th><th>Sam</th><th>Dim</th>
+        </tr>
+        <tr><td></td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+        <tr><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr>
+        <tr><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
+        <tr><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td></tr>
+        <tr><td>29</td><td>30</td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+</body>
+</html>
