@@ -1,77 +1,84 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
- <head>
- <title>TODO supply a title</title>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <style>
- .entete{
- border:1px solid;
- }
- .menu1{
- border: 1px solid blue;
- height: 30px;
- display : inline-block;
- float:left;
- margin: 1px;
- }
- .recherche{
- border: 1px solid red;
- height: 30px;
- float :right;
- margin: 1px;
- }
- .cadreLogoPub{
- border: 1px solid blueviolet;
- clear: left;
- margin: 1px;
- }
- .logo{
- display: inline-block;
- border : 1px solid chocolate;
- margin: 1px;
- }
- .emploi{
- display: inline-block;
- border : 1px solid chartreuse;
- }
- .main{
- margin-top: 2px;
- margin-bottom: 2px;
- background-color: cadetblue;
- height: 400px;
- }
- .pdp{
- margin-top: 2px;
- margin-bottom: 2px;
- background-color: chartreuse;
- height: 50px;
- }
- </style>
- </head>
- <body>
- <header class="entete">
- <div>
- <nav class="menu1"> ZONE DE MENU 1 </nav>
- <form class="recherche">
- <input type="text">
- <input type="submit" value="rechercher" />
- </form>
- </div>
- <div class="cadreLogoPub">
- <div class="logo"><img src="./images/arrow.png" alt="logo"/> </div>
- <div class="emploi"> CADRE EMPLOI </div>
- </div>
- <nav> ZONE DE MENU 2</nav>
- </header>
- <section class="main">
- <article> ARTICLE </article>
- </section>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoning Page Web</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header, .footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        .menu, .menu2 {
+            background-color: #0073e6;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+        .search {
+            text-align: center;
+            margin: 10px;
+        }
+        .logo-pub {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+        }
+        .logo, .emploi {
+            border: 2px solid black;
+            padding: 20px;
+            text-align: center;
+        }
+        .main-content {
+            background-color: cadetblue;
+            padding: 20px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        article {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="menu">ZONE DE MENU</nav>
+        <form class="search">
+            <input type="text" placeholder="Rechercher...">
+            <input type="submit" value="Rechercher">
+        </form>
+    </header>
+    
+    <section class="logo-pub">
+        <div class="logo">LOGO</div>
+        <div class="emploi">CADRE EMPLOI</div>
+    </section>
+    
+    <nav class="menu2">ZONE DE MENU 2</nav>
+    
+    <main class="main-content">
+        <article>ARTICLE</article>
+    </main>
+    
+    <footer class="footer">PIED DE PAGE</footer>
+</body>
+</html>
+
  <footer class="pdp"> PIED DE PAGE </footer>
  </body>
 </html>
