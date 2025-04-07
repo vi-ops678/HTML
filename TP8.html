@@ -96,24 +96,41 @@
     </div>
     <script>
         function calculerDevis() {
+            // Récupération des valeurs saisies
             const longueur = parseFloat(document.getElementById('longueur').value);
             const largeur = parseFloat(document.getElementById('largeur').value);
-            const epaisseur = parseFloat(document.getElementById('epaisseur').value) / 100; // Convert cm to m
+            const epaisseur = parseFloat(document.getElementById('epaisseur').value) / 100; // Conversion cm en m
 
+            // Vérification des valeurs saisies
+            if (isNaN(longueur) || isNaN(largeur) || isNaN(epaisseur) || longueur <= 0 || largeur <= 0 || epaisseur <= 0) {
+                alert("Veuillez entrer des valeurs numériques valides.");
+                return;
+            }
+
+            // Calcul du volume de béton nécessaire
             const volumeBeton = longueur * largeur * epaisseur;
+            console.log("Volume de béton nécessaire: " + volumeBeton + " m³");
+
+            // Calcul du nombre de camions nécessaires
             const volumeCamion = 9; // Volume d'un camion en m³
             const nbCamions = Math.ceil(volumeBeton / volumeCamion);
+            console.log("Nombre de camions nécessaires: " + nbCamions);
 
+            // Calcul du coût total
             const prixBetonHT = 91; // Prix du m³ de béton HT
             const prixTransport = 140; // Prix du transport par livraison
             const coutHT = (volumeBeton * prixBetonHT) + (nbCamions * prixTransport);
             const coutTTC = coutHT * 1.2; // TVA 20%
+            console.log("Coût total HT: " + coutHT + " €");
+            console.log("Coût total TTC: " + coutTTC + " €");
 
+            // Affichage des résultats dans la page
             document.getElementById('volume').innerText = volumeBeton.toFixed(2);
             document.getElementById('camions').innerText = nbCamions;
             document.getElementById('coutHT').innerText = coutHT.toFixed(2);
             document.getElementById('coutTTC').innerText = coutTTC.toFixed(2);
 
+            // Affichage du devis
             document.getElementById('devis').classList.remove('hidden');
         }
     </script>
