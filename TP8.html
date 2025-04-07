@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul de Devis Béton</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input {
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #devis {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calcul de Devis Béton</h1>
+        <form id="betonForm">
+            <label for="longueur">Longueur (m):</label>
+            <input type="number" id="longueur" name="longueur" required min="0"><br>
+
+            <label for="largeur">Largeur (m):</label>
+            <input type="number" id="largeur" name="largeur" required min="0"><br>
+
+            <label for="epaisseur">Épaisseur (cm):</label>
+            <input type="number" id="epaisseur" name="epaisseur" required min="15" max="35"><br>
+
+            <button type="button" onclick="calculerDevis()">Obtenir le Devis</button>
+        </form>
+
+        <div id="devis" class="hidden">
+            <h2>Devis</h2>
+            <p>Volume de béton nécessaire: <span id="volume"></span> m³</p>
+            <p>Nombre de camions nécessaires: <span id="camions"></span></p>
+            <p>Coût total HT: <span id="coutHT"></span> €</p>
+            <p>Coût total TTC: <span id="coutTTC"></span> €</p>
+        </div>
+    </div>
+    <script>
+        function calculerDevis() {
+            const longueur = parseFloat(document.getElementById('longueur').value);
+            const largeur = parseFloat(document.getElementById('largeur').value);
+            const epaisseur = parseFloat(document.getElementById('epaisseur').value) / 100; // Convert cm to m
+
+            const volumeBeton = longueur * largeur * epaisseur;
+            const volumeCamion = 9; // Volume d'un camion en m³
+            const nbCamions = Math.ceil(volumeBeton / volumeCamion);
+
+            const prixBetonHT = 91; // Prix du m³ de béton HT
+            const prixTransport = 140; // Prix du transport par livraison
+            const coutHT = (volumeBeton * prixBetonHT) + (nbCamions * prixTransport);
+            const coutTTC = coutHT * 1.2; // TVA 20%
+
+            document.getElementById('volume').innerText = volumeBeton.toFixed(2);
+            document.getElementById('camions').innerText = nbCamions;
+            document.getElementById('coutHT').innerText = coutHT.toFixed(2);
+            document.getElementById('coutTTC').innerText = coutTTC.toFixed(2);
+
+            document.getElementById('devis').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
