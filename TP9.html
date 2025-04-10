@@ -140,7 +140,7 @@
       });
     });
     document.addEventListener('click', (e) => {
-      if (!e.target.classList.contains('def')) popup.style.display = 'none';
+      if (!e.target.classList.contains('def') && !popup.contains(e.target)) popup.style.display = 'none';
     });
 
     // EX 2 - Formulaire
@@ -153,4 +153,50 @@
     });
 
     // EX 3 - Compte à rebours vers 11 avril 2027 à 8h
-    const eventDate = new Date("2027-04-11T08
+    const eventDate = new Date("2027-04-11T08:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        countdown.innerHTML = "Les élections présidentielles ont commencé !";
+        return;
+      }
+
+      const jours = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const heures = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const secondes = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `<strong>${jours} jours</strong>, ${heures}h ${minutes}min ${secondes}s avant les élections`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // EX 4 - Calendrier dynamique
+    function genererCalendrier() {
+      const mois = parseInt(document.getElementById('mois').value);
+      const annee = parseInt(document.getElementById('annee').value);
+      const date = new Date(annee, mois, 1);
+      let html = '<table><tr><th>Dim</th><th>Lun</th><th>Mar</th><th>Mer</th><th>Jeu</th><th>Ven</th><th>Sam</th></tr><tr>';
+
+      for (let i = 0; i < date.getDay(); i++) html += '<td></td>';
+
+      while (date.getMonth() === mois) {
+        html += `<td>${date.getDate()}</td>`;
+        if (date.getDay() === 6) html += '</tr><tr>';
+        date.setDate(date.getDate() + 1);
+      }
+
+      html += '</tr></table>';
+      document.getElementById('calendar').innerHTML = html;
+    }
+
+    // Affichage par défaut du calendrier
+    window.onload = genererCalendrier;
+  </script>
+</body>
+</html>
