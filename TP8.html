@@ -1,138 +1,136 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcul de Devis Béton</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <title>Devis Béton - Exercice 8</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
 
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 600px;
+    }
 
-        h1 {
-            margin-bottom: 20px;
-        }
+    h1, h2 {
+      color: #4b6043;
+      text-align: center;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-        }
+    form label {
+      display: block;
+      margin-top: 10px;
+    }
 
-        label {
-            margin-top: 10px;
-        }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
 
-        input {
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    button {
+      margin-top: 20px;
+      background-color: #4b6043;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-        button {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+    button:hover {
+      background-color: #3a4c34;
+    }
 
-        button:hover {
-            background-color: #218838;
-        }
+    #devis {
+      display: none;
+      margin-top: 30px;
+      border-top: 2px solid #ccc;
+      padding-top: 20px;
+    }
 
-        .hidden {
-            display: none;
-        }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+    }
 
-        #devis {
-            margin-top: 20px;
-            border-top: 1px solid #ccc;
-            padding-top: 10px;
-        }
-    </style>
+    .row span {
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Calcul de Devis Béton</h1>
-        <form id="betonForm">
-            <label for="longueur">Longueur (m):</label>
-            <input type="number" id="longueur" name="longueur" required min="0"><br>
+  <div class="container">
+    <h1>Demande de Devis Béton</h1>
 
-            <label for="largeur">Largeur (m):</label>
-            <input type="number" id="largeur" name="largeur" required min="0"><br>
+    <form id="formulaire">
+      <label for="longueur">Longueur (m):</label>
+      <input type="number" id="longueur" min="0" required>
 
-            <label for="epaisseur">Épaisseur (cm):</label>
-            <input type="number" id="epaisseur" name="epaisseur" required min="15" max="35"><br>
+      <label for="largeur">Largeur (m):</label>
+      <input type="number" id="largeur" min="0" required>
 
-            <button type="button" onclick="calculerDevis()">Obtenir le Devis</button>
-        </form>
+      <label for="epaisseur">Épaisseur (cm):</label>
+      <input type="number" id="epaisseur" min="15" max="35" required>
 
-        <div id="devis" class="hidden">
-            <h2>Devis</h2>
-            <p>Volume de béton nécessaire: <span id="volume"></span> m³</p>
-            <p>Nombre de camions nécessaires: <span id="camions"></span></p>
-            <p>Coût total HT: <span id="coutHT"></span> €</p>
-            <p>Coût total TTC: <span id="coutTTC"></span> €</p>
-        </div>
+      <button type="button" onclick="genererDevis()">Obtenir le devis</button>
+    </form>
+
+    <div id="devis">
+      <h2>Votre Devis</h2>
+      <div class="row"><span>Volume de béton :</span> <span id="volume"></span> m³</div>
+      <div class="row"><span>Ciment nécessaire :</span> <span id="ciment"></span> tonnes</div>
+      <div class="row"><span>Nombre de camions :</span> <span id="camions"></span></div>
+      <div class="row"><span>Coût HT :</span> <span id="coutHT"></span> €</div>
+      <div class="row"><span>Coût TTC :</span> <span id="coutTTC"></span> €</div>
     </div>
-    <script>
-        function calculerDevis() {
-            // Récupération des valeurs saisies
-            const longueur = parseFloat(document.getElementById('longueur').value);
-            const largeur = parseFloat(document.getElementById('largeur').value);
-            const epaisseur = parseFloat(document.getElementById('epaisseur').value) / 100; // Conversion cm en m
+  </div>
 
-            // Vérification des valeurs saisies
-            if (isNaN(longueur) || isNaN(largeur) || isNaN(epaisseur) || longueur <= 0 || largeur <= 0 || epaisseur <= 0) {
-                alert("Veuillez entrer des valeurs numériques valides.");
-                return;
-            }
+  <script>
+    function genererDevis() {
+      let longueur = parseFloat(document.getElementById("longueur").value);
+      let largeur = parseFloat(document.getElementById("largeur").value);
+      let epaisseur = parseFloat(document.getElementById("epaisseur").value);
 
-            // Calcul du volume de béton nécessaire
-            const volumeBeton = longueur * largeur * epaisseur;
-            console.log("Volume de béton nécessaire: " + volumeBeton + " m³");
+      // Validation des valeurs
+      if (isNaN(longueur) || isNaN(largeur) || isNaN(epaisseur) ||
+          longueur <= 0 || largeur <= 0 || epaisseur < 15 || epaisseur > 35) {
+        alert("Merci de saisir des valeurs valides et respectant les contraintes.");
+        return;
+      }
 
-            // Calcul du nombre de camions nécessaires
-            const volumeCamion = 9; // Volume d'un camion en m³
-            const nbCamions = Math.ceil(volumeBeton / volumeCamion);
-            console.log("Nombre de camions nécessaires: " + nbCamions);
+      // Conversion épaisseur cm -> m
+      epaisseur = epaisseur / 100;
 
-            // Calcul du coût total
-            const prixBetonHT = 91; // Prix du m³ de béton HT
-            const prixTransport = 140; // Prix du transport par livraison
-            const coutHT = (volumeBeton * prixBetonHT) + (nbCamions * prixTransport);
-            const coutTTC = coutHT * 1.2; // TVA 20%
-            console.log("Coût total HT: " + coutHT + " €");
-            console.log("Coût total TTC: " + coutTTC + " €");
+      const volume = longueur * largeur * epaisseur;
+      const ciment = (volume * 350) / 1000; // kg => tonnes
+      const camions = Math.ceil(volume / 9);
 
-            // Affichage des résultats dans la page
-            document.getElementById('volume').innerText = volumeBeton.toFixed(2);
-            document.getElementById('camions').innerText = nbCamions;
-            document.getElementById('coutHT').innerText = coutHT.toFixed(2);
-            document.getElementById('coutTTC').innerText = coutTTC.toFixed(2);
+      const prixM3 = 91;
+      const prixLivraison = 140;
+      const coutHT = volume * prixM3 + camions * prixLivraison;
+      const coutTTC = coutHT * 1.2;
 
-            // Affichage du devis
-            document.getElementById('devis').classList.remove('hidden');
-        }
-    </script>
+      // Affichage
+      document.getElementById("volume").textContent = volume.toFixed(2);
+      document.getElementById("ciment").textContent = ciment.toFixed(2);
+      document.getElementById("camions").textContent = camions;
+      document.getElementById("coutHT").textContent = coutHT.toFixed(2);
+      document.getElementById("coutTTC").textContent = coutTTC.toFixed(2);
+
+      document.getElementById("devis").style.display = "block";
+    }
+  </script>
 </body>
 </html>
