@@ -1,125 +1,217 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Devis Béton - TP JavaScript</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+  <meta charset="UTF-8">
+  <title>Fiche Devis Béton</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 40px;
+    }
 
-        .container {
-            background-color: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 0 12px rgba(0,0,0,0.1);
-            width: 350px;
-        }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
 
-        h1 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+    h1, h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
 
-        label {
-            display: block;
-            margin-top: 10px;
-        }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
 
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-        button {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-        button:hover {
-            background-color: #0056b3;
-        }
+    button:hover {
+      background-color: #27ae60;
+    }
 
-        #devis {
-            margin-top: 20px;
-            display: none;
-            border-top: 1px solid #ccc;
-            padding-top: 15px;
-        }
+    #fiche-devis {
+      margin-top: 40px;
+      display: none;
+      border-top: 2px solid #ccc;
+      padding-top: 20px;
+    }
 
-        .result {
-            margin-bottom: 10px;
-        }
-    </style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #ecf0f1;
+    }
+
+    .total {
+      text-align: right;
+      font-weight: bold;
+      padding-top: 10px;
+    }
+
+    .signature {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .highlight {
+      background-color: #dff0d8;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Calcul du Devis Béton</h1>
-    <form id="formulaireDevis">
-        <label for="surface">Surface (en m²) :</label>
-        <input type="number" id="surface" name="surface" required min="1">
+  <div class="container">
+    <h1>Calculateur de Devis Béton</h1>
+    <form>
+      <label for="surface">Surface de la dalle (en m²) :</label>
+      <input type="number" id="surface" min="1" required>
 
-        <label for="epaisseur">Épaisseur (en cm) :</label>
-        <input type="number" id="epaisseur" name="epaisseur" required min="15" max="35">
+      <label for="epaisseur">Épaisseur de la dalle (en cm) :</label>
+      <input type="number" id="epaisseur" min="15" max="35" required>
 
-        <button type="button" onclick="genererDevis()">Obtenir le devis</button>
+      <button type="button" onclick="genererFicheDevis()">Obtenir le Devis</button>
     </form>
 
-    <div id="devis">
-        <h2>Votre devis :</h2>
-        <div class="result">Volume de béton : <span id="volume"></span> m³</div>
-        <div class="result">Ciment nécessaire : <span id="ciment"></span> tonnes</div>
-        <div class="result">Nombre de camions : <span id="camions"></span></div>
-        <div class="result">Coût total HT : <span id="coutHT"></span> €</div>
-        <div class="result">Coût total TTC : <span id="coutTTC"></span> €</div>
+    <div id="fiche-devis">
+      <h2>DEVIS N°2025-001</h2>
+      <p><strong>Date du devis :</strong> <span id="date-devis"></span></p>
+      <p><strong>Validité :</strong> 1 mois</p>
+
+      <hr>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Quantité</th>
+            <th>Unité</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Volume de béton</td>
+            <td id="volume"></td>
+            <td>m³</td>
+            <td id="total-volume"></td>
+          </tr>
+          <tr>
+            <td>Ciment nécessaire</td>
+            <td id="ciment"></td>
+            <td>tonnes</td>
+            <td>Inclus</td>
+          </tr>
+          <tr>
+            <td>Livraison (camions 9m³)</td>
+            <td id="camions"></td>
+            <td>camion(s)</td>
+            <td id="total-transport"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="total">Sous-total HT : <span id="sous-total"></span> €</p>
+      <p class="total">TVA (20%) : <span id="tva"></span> €</p>
+      <p class="highlight">Total TTC : <span id="total-ttc"></span> €</p>
+
+      <div class="signature">
+        <div>
+          <strong>Conditions :</strong><br>
+          30% d'acompte à la commande<br>
+          Le solde à la livraison
+        </div>
+        <div style="text-align: right;">
+          Signature du client
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<script>
-    function genererDevis() {
-        const surface = parseFloat(document.getElementById("surface").value);
-        const epaisseurCM = parseFloat(document.getElementById("epaisseur").value);
+  <script>
+    function genererFicheDevis() {
+      const surface = parseFloat(document.getElementById("surface").value);
+      const epaisseurCM = parseFloat(document.getElementById("epaisseur").value);
 
-        // Validation
-        if (isNaN(surface) || isNaN(epaisseurCM) || surface <= 0 || epaisseurCM < 15 || epaisseurCM > 35) {
-            alert("Merci de saisir une surface positive et une épaisseur entre 15 cm et 35 cm.");
-            return;
-        }
+      if (isNaN(surface) || isNaN(epaisseurCM) || surface <= 0 || epaisseurCM < 15 || epaisseurCM > 35) {
+        alert("Veuillez saisir une surface positive et une épaisseur comprise entre 15 et 35 cm.");
+        return;
+      }
 
-        // Calculs
-        const epaisseurM = epaisseurCM / 100;
-        const volume = surface * epaisseurM;
-        const cimentT = (volume * 350) / 1000;
-        const camions = Math.ceil(volume / 9);
-        const prixHT = (volume * 91) + (camions * 140);
-        const prixTTC = prixHT * 1.2;
+      const epaisseurM = epaisseurCM / 100;
+      const volume = surface * epaisseurM;
+      const cimentTonnes = (volume * 350) / 1000;
+      const camions = Math.ceil(volume / 9);
 
-        // Affichage dans la page
-        document.getElementById("volume").innerText = volume.toFixed(2);
-        document.getElementById("ciment").innerText = cimentT.toFixed(2);
-        document.getElementById("camions").innerText = camions;
-        document.getElementById("coutHT").innerText = prixHT.toFixed(2);
-        document.getElementById("coutTTC").innerText = prixTTC.toFixed(2);
+      const prixBetonHT = 91;
+      const prixTransport = 140;
+      const totalVolumeHT = volume * prixBetonHT;
+      const totalTransport = camions * prixTransport;
+      const sousTotal = totalVolumeHT + totalTransport;
+      const tva = sousTotal * 0.20;
+      const totalTTC = sousTotal + tva;
 
-        document.getElementById("devis").style.display = "block";
+      // Affichage dans la fiche
+      document.getElementById("volume").innerText = volume.toFixed(2);
+      document.getElementById("total-volume").innerText = totalVolumeHT.toFixed(2) + " €";
+      document.getElementById("ciment").innerText = cimentTonnes.toFixed(2);
+      document.getElementById("camions").innerText = camions;
+      document.getElementById("total-transport").innerText = totalTransport.toFixed(2) + " €";
+      document.getElementById("sous-total").innerText = sousTotal.toFixed(2);
+      document.getElementById("tva").innerText = tva.toFixed(2);
+      document.getElementById("total-ttc").innerText = totalTTC.toFixed(2);
+
+      // Date actuelle
+      const date = new Date().toLocaleDateString("fr-FR");
+      document.getElementById("date-devis").innerText = date;
+
+      // Afficher la fiche
+      document.getElementById("fiche-devis").style.display = "block";
     }
-</script>
+  </script>
 
 </body>
 </html>
