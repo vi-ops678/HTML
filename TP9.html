@@ -114,13 +114,7 @@
   <div class="section">
     <h2>Exercice 4 : Calendrier dynamique</h2>
     <label>Mois :</label>
-    <select id="mois">
-      <script>
-        for (let m = 0; m < 12; m++) {
-          document.write(`<option value="${m}">${new Date(2000, m).toLocaleString('fr-FR', { month: 'long' })}</option>`);
-        }
-      </script>
-    </select>
+    <select id="mois"></select>
     <label>Année :</label>
     <input type="number" id="annee" value="2025">
     <button onclick="genererCalendrier()">Afficher</button>
@@ -140,7 +134,9 @@
       });
     });
     document.addEventListener('click', (e) => {
-      if (!e.target.classList.contains('def') && !popup.contains(e.target)) popup.style.display = 'none';
+      if (!e.target.classList.contains('def') && !popup.contains(e.target)) {
+        popup.style.display = 'none';
+      }
     });
 
     // EX 2 - Formulaire
@@ -196,7 +192,19 @@
     }
 
     // Affichage par défaut du calendrier
-    window.onload = genererCalendrier;
+    window.onload = function() {
+      // Générer les mois dynamiquement
+      const moisSelect = document.getElementById('mois');
+      const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+      months.forEach((month, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = month;
+        moisSelect.appendChild(option);
+      });
+      // Afficher le calendrier par défaut
+      genererCalendrier();
+    };
   </script>
 </body>
 </html>
